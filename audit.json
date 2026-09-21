@@ -1,0 +1,46 @@
+{
+  "original_training_rows": 60000,
+  "official_test_rows": 10000,
+  "usable_training_rows": 60000,
+  "features": 784,
+  "image_shape": [
+    28,
+    28,
+    1
+  ],
+  "missing_pixels": 0,
+  "pixel_dtype": "uint8",
+  "pixel_range": [
+    0,
+    255
+  ],
+  "training_exclusions": {},
+  "excluded_training_rows": 0,
+  "test_duplicate_images_retained": 0,
+  "train_test_exact_overlap_after_cleaning": 0,
+  "training_class_counts": [
+    6000,
+    6000,
+    6000,
+    6000,
+    6000,
+    6000,
+    6000,
+    6000,
+    6000,
+    6000
+  ],
+  "test_class_counts": [
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+  ],
+  "note": "Official test set is preserved. Test pixels are used only for exact-overlap auditing before fitting. Test outcomes never select a model or an epoch. Near duplicates and product identity groups cannot be ruled out."
+}

@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "date": "2026-09-20",
+  "created_at": "2026-09-20T21:01:03.780409+03:00",
+  "folder": "2026-09-20-fashion-mnist-tensorflow",
+  "dataset_id": "fashion-mnist",
+  "dataset_family": "fashion-mnist",
+  "title": "Fashion-MNIST classification with TensorFlow",
+  "task": "classification",
+  "framework": "TensorFlow",
+  "primary_result": "macro_f1: 0.8871",
+  "data_sha256": "667a9a0559c310e5641b1cf2bb25bd5e9479b025be011574ff49096946b987c3",
+  "data_fingerprint_method": "SHA-256 of UTF-8 JSON mapping filenames to decompressed SHA-256 values; sort_keys=True, separators=(comma, colon)",
+  "dataset_spec": {
+    "id": "fashion-mnist",
+    "loader": "idx_gzip",
+    "task": "classification",
+    "target": "class_id",
+    "source": "https://github.com/zalandoresearch/fashion-mnist",
+    "license": "MIT",
+    "source_commit": "b2617bb6d3ffa2e429640350f613e3291e10b141",
+    "question": "Do convolutional layers improve clothing recognition over a dense network under the same five-epoch training budget?",
+    "caveat": "Controlled 28 by 28 product-image benchmark; near duplicates and shared product identities cannot be ruled out. No real-world photo performance claim."
+  },
+  "data_reference": {
+    "format": "IDX gzip at pinned public source",
+    "source_file_manifest": "data_sources.json",
+    "snapshot_stored": false
+  },
+  "config": {
+    "dataset": "Fashion-MNIST",
+    "source_repository": "zalandoresearch/fashion-mnist",
+    "source_commit": "b2617bb6d3ffa2e429640350f613e3291e10b141",
+    "seed": 42,
+    "cv_folds": 3,
+    "epochs": 5,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "dropout": 0.25,
+    "models": [
+      "CNN",
+      "Dense MLP",
+      "Dummy baseline"
+    ],
+    "selection_metric": "macro_f1",
+    "test_selection": false,
+    "files": {
+      "train-images-idx3-ubyte.gz": {
+        "md5": "8d4fb7e6c68d591d4c3dfef9ec88bf0d",
+        "count": 60000,
+        "kind": "images"
+      },
+      "train-labels-idx1-ubyte.gz": {
+        "md5": "25c81989df183df01b3e8a0aad5dffbe",
+        "count": 60000,
+        "kind": "labels"
+      },
+      "t10k-images-idx3-ubyte.gz": {
+        "md5": "bef4ecab320f06d8554ea6380940ec79",
+        "count": 10000,
+        "kind": "images"
+      },
+      "t10k-labels-idx1-ubyte.gz": {
+        "md5": "bb300cfdad3c16e7a12a480ee83cd310",
+        "count": 10000,
+        "kind": "labels"
+      }
+    }
+  },
+  "python": "3.12.14",
+  "versions": {
+    "tensorflow-cpu": "2.20.0",
+    "keras": "3.15.1",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8"
+  },
+  "runner": "train.py",
+  "validation_runner": "verify.py",
+  "execution_mode": "One manually requested TensorFlow study; project-specific image pipeline",
+  "code_sha256": {
+    "train.py": "803d646d7a5c451fa6d0af00d57908e71af2e7554259c632d0cb0eb7459a9a7f",
+    "verify.py": "1f7fb81253f4a1a1b06564006340f48a6b1d3403510f00de7d7cfe0b6a1cbdf7"
+  },
+  "authorship": "Automated by OpenAI Codex; human review pending",
+  "ai_review": "disabled",
+  "modeling_note": "Two fixed neural architectures compared using training-only three-fold macro-F1; only the winner and dummy scored on the official test set.",
+  "verification": "Full source validation, holdout metric checks, saved fold validation, and exact inference agreement after weight reload; all seven figures visually reviewed.",
+  "artifact_sha256": {
+    "DATA_LICENSE.txt": "13ef4788476d292858fa60eb9a5f74aeca5c65770bc885ccaa05823a17ef7be1",
+    "LEARNING_NOTES.md": "7bc25f7740a41693a5611a6c0fa9f9a19479eaa22eb934dd8c557b70c701f2d9",
+    "README.md": "a29a00331ae152cc45c055275acbfb054e92b7689f777ee5b00a49483ded87cc",
+    "SOURCE.md": "fbc3d0fb834f2e8f45a17bfd31bfc10fc6173b9b1afb859a602e7038a7956102",
+    "analysis.ipynb": "2a9e4d4367c5e4e347a039fb81ae1a1b6969200ecabf2d9bbc93f713f1c96c34",
+    "audit.json": "0a61f0205b52d9585f23140811ef6057abd67204245c6723a25ee47a1e0d7d24",
+    "class_names.csv": "b88a0029a3875d7c5ea5cff0fb8b2487aca026150ea87272c79ae64371054f64",
+    "cv_assignments.csv": "4334a0bfef11f3d8df3ff8347e8cc4e4f84c770ec0134d6140ebe30a0d40c374",
+    "data_dictionary.csv": "ac42b313c459179ed73767936f5fe7f2ae8ae4f4861f1071ec4a1c4fe38b5394",
+    "data_sources.json": "9de92ae8b3ace91efee5cad82e1af41c0183b0ed7c807bc469b2f3669d44b18e",
+    "descriptive_statistics.csv": "94035b2f8a2633870f5e439270c818621bebe9cde26a3bbc21e135f56aec56da",
+    "environment.lock.txt": "23ac7eea1ae6c97134fca931a5ec505d42ac2c003a24b40f9e0a9bb819e10dad",
+    "error_analysis.csv": "a6265496cf9e1ed010b7df86d21f1a7a3072e5268116badaab099a396d56299a",
+    "excluded_training_rows.csv": "be6f4c0f8853ff13c2d7e95cd7941b587787a657092562daf596344108d1a9be",
+    "execution.json": "99e2d5a845f0176e77893cdca56a4bd2050658b112e9b558d8a7c0296c7439a9",
+    "figures/confusion-matrix.png": "0ffa8148236998d98979357b73e45f2dc5751ebaf47351cbc9b292c449b79a1a",
+    "figures/data-quality.png": "7f7c48001c7338eca5a8a39d7ff9598373892cccdf6dd0fb65c6ef0d0ca66746",
+    "figures/dataset-examples.png": "2853ec8078e98ee4e71cf25f5309c631a6c2b087b5f8160815e650430936eebb",
+    "figures/distributions.png": "82e4eca32965a9e3c18446010fa0e1de0892e0ce622594aaf439c5b80162b496",
+    "figures/error-examples.png": "41130a27a7193d0b8def74cb4f1ef7927201d3b6e33c023e0bb0c7c3833b865c",
+    "figures/learning-curves.png": "198e9b93753cc6f5accda6d4aa7aa12e9c7f53e31913e12fbc27016dafd58293",
+    "figures/model-comparison.png": "8c969da3793f32a373232f544a872b065d2bafa8dd839d6842a25fe0d594bd3a",
+    "metrics.json": "9221304ab7a51349ce32ff01119a285b372a586c16933312f67c1ef0cd150f6a",
+    "model.weights.h5": "4509be209a5ab1f3ff5fab9ca634cca077cf3149c09c13d8836f9bad4f7b9937",
+    "model_architecture.json": "778dfd5fd02a0747bb2d21e8cbe3c18d8961f8bc62e101f0c69e58e55a1ab8eb",
+    "model_summary.txt": "03e9ccf24b735e96940280089dd2ac4329ff4013af7baa63a11bb82227cf187a",
+    "notebook-requirements.txt": "81e3c8cc2d7c5c8f0b1a628bd2c222bea314738bb219a469d4d746ddf88685f1",
+    "predictions.csv": "d027101ffd5006a4991e4a1744d9d37e7f0f7885f1ee5fd16e97d9bf5e4bcbd1",
+    "report.html": "3d85c833cb26ea437cffbc5aa3af3434249798aad04e77f5194b7df4b06da73a",
+    "repository_metadata.json": "c00ace3797fd35909922b302bdbdaed9796b870dda5927b1f000704c77739168",
+    "requirements.txt": "2c5e382b98e2617db1324e0ec059bc916543a66c90d8b7d5823d2aac05db3596",
+    "selection.json": "5dbc1f5950ce8f7e4ac96c60ae65a6a27fbbf290699c8b45b14e68b7bbd3edeb",
+    "splits.json": "4b782540ba2b086ee522dbb623b074308a67b9ff492cca2cc3d4954ceaf1d38c",
+    "study_config.json": "8224b9a6678fb4f9f0e5353b46eb4f7070d0e70be22f55c7b05d18b8611fa18f",
+    "test_probabilities.npy": "61a25c0d39d0ab878f8a7114ece94edfc9f1d475f61a554cc055866547dc1558",
+    "train.py": "803d646d7a5c451fa6d0af00d57908e71af2e7554259c632d0cb0eb7459a9a7f",
+    "training_history.csv": "d4e4324fc917e6a082cffda70a77a12ed5c62dfdd19dfd0fc262b3e0f0e4bdf0",
+    "verification.json": "01b2ccb959a5c3faed8380e2cbf4c019f2403ae9a9345197c73c9c4fdda4c71d",
+    "verify.py": "1f7fb81253f4a1a1b06564006340f48a6b1d3403510f00de7d7cfe0b6a1cbdf7"
+  }
+}

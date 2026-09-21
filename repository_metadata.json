@@ -1,0 +1,14 @@
+{
+  "suggested_repo_name": "fashion-mnist-tensorflow-study",
+  "github_about": "TensorFlow CNN vs dense neural network on Fashion-MNIST, with audited data, cross-validation, learning curves, and holdout error analysis.",
+  "topics": [
+    "tensorflow",
+    "keras",
+    "deep-learning",
+    "cnn",
+    "fashion-mnist",
+    "image-classification",
+    "data-science",
+    "model-evaluation"
+  ]
+}

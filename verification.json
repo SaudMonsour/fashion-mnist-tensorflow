@@ -1,0 +1,224 @@
+{
+  "status": "passed",
+  "source_files_fully_validated": 4,
+  "source_train_rows": 60000,
+  "source_test_rows": 10000,
+  "holdout_metrics_recomputed_from_predictions": {
+    "macro_f1": 0.8871045200926716,
+    "accuracy": 0.8874,
+    "balanced_accuracy": 0.8874000000000001
+  },
+  "dummy_metrics_recomputed": true,
+  "cv_mean_and_sd_recomputed": true,
+  "saved_fold_assignments_match_seeded_split": true,
+  "source_labels_match_all_predictions": true,
+  "all_errors_match_csv": true,
+  "reloaded_weight_predictions_match_all_test_rows": true,
+  "max_probability_difference_after_weight_reload": 0.0,
+  "hdf5_numeric_datasets_inspected": [
+    {
+      "path": "layers/conv2d/vars/0",
+      "shape": [
+        3,
+        3,
+        1,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "layers/conv2d/vars/1",
+      "shape": [
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "layers/conv2d_1/vars/0",
+      "shape": [
+        3,
+        3,
+        16,
+        32
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "layers/conv2d_1/vars/1",
+      "shape": [
+        32
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "layers/dense/vars/0",
+      "shape": [
+        1568,
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "layers/dense/vars/1",
+      "shape": [
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "layers/dense_1/vars/0",
+      "shape": [
+        64,
+        10
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "layers/dense_1/vars/1",
+      "shape": [
+        10
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/0",
+      "shape": [],
+      "dtype": "int64"
+    },
+    {
+      "path": "optimizer/vars/1",
+      "shape": [],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/10",
+      "shape": [
+        1568,
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/11",
+      "shape": [
+        1568,
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/12",
+      "shape": [
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/13",
+      "shape": [
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/14",
+      "shape": [
+        64,
+        10
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/15",
+      "shape": [
+        64,
+        10
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/16",
+      "shape": [
+        10
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/17",
+      "shape": [
+        10
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/2",
+      "shape": [
+        3,
+        3,
+        1,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/3",
+      "shape": [
+        3,
+        3,
+        1,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/4",
+      "shape": [
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/5",
+      "shape": [
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/6",
+      "shape": [
+        3,
+        3,
+        16,
+        32
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/7",
+      "shape": [
+        3,
+        3,
+        16,
+        32
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/8",
+      "shape": [
+        32
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer/vars/9",
+      "shape": [
+        32
+      ],
+      "dtype": "float32"
+    }
+  ],
+  "execution_code_and_config_hashes_match": true,
+  "scope": "Independent artifact checks and full holdout inference; training was not rerun."
+}

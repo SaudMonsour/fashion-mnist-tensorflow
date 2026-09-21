@@ -1,0 +1,8 @@
+{
+  "strategy": "Fixed official test split; exact overlap removal; stratified 3-fold CV on retained training images",
+  "seed": 42,
+  "training_rows": 60000,
+  "test_rows": 10000,
+  "test_source_row_ids": "0 through 9999 inclusive",
+  "cv_assignments": "cv_assignments.csv"
+}

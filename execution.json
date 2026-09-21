@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-09-20T21:01:03.780409+03:00",
+  "python": "3.12.14",
+  "versions": {
+    "tensorflow-cpu": "2.20.0",
+    "keras": "3.15.1",
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8"
+  },
+  "train_script_sha256": "803d646d7a5c451fa6d0af00d57908e71af2e7554259c632d0cb0eb7459a9a7f",
+  "config_sha256": "8224b9a6678fb4f9f0e5353b46eb4f7070d0e70be22f55c7b05d18b8611fa18f",
+  "determinism_enabled": true,
+  "oneDNN_enabled": false,
+  "device": "CPU",
+  "thread_limits": {
+    "intra_op": 4,
+    "inter_op": 1
+  },
+  "limitation": "Exact numeric equality is only expected with the same software and hardware environment."
+}
