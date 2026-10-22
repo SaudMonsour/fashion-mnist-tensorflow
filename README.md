@@ -1,59 +1,74 @@
-# تصنيف صور الملابس
+# Fashion-MNIST Classification with TensorFlow
 
-مقارنة شبكة التفاف وشبكة كثيفة لتمييز عشر فئات من الملابس، باستخدام TensorFlow.
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat&logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-تضم المجموعة 70,000 صورة رمادية بحجم 28 × 28: 60,000 للتدريب و10,000 للاختبار الرسمي. استُخدم تحقق متقاطع طبقي بثلاث طيات، مع خمس حقب لكل نموذج، وحجم دفعة 256، ومحسّن Adam بمعدل تعلم 0.001 وإسقاط 0.25.
+A comparative study evaluating Convolutional Neural Networks (CNN) against Multi-Layer Perceptrons (MLP) for recognizing ten clothing categories from grayscale images under a fixed 5-epoch training budget.
 
-تتضمن شبكة الالتفاف طبقتين بحجم 3 × 3، ثم طبقة كثيفة من 64 وحدة. بعد الاختيار أعيد تدريبها على كامل بيانات التدريب للميزانية نفسها.
+---
 
-سُجلت 1,126 صورة خاطئة في الاختبار. كانت فئة القميص صعبة، بمقياس F1 يساوي 0.6937، مع التباس متكرر بينها وبين القميص القصير والمعطف. تظهر الأمثلة ومصفوفة الالتباس في الرسوم.
+## Overview
 
-## النتائج المسجّلة
+* **Task:** Multi-class image classification (10 categories).
+* **Dataset:** 70,000 total samples (60,000 training, 10,000 official test) at 28 × 28 × 1 resolution.
+* **Top Model:** **TensorFlow CNN** (Holdout Macro-F1 = **0.8871**).
+* **Baseline Comparison:** Dummy Classifier (Holdout Macro-F1 = 0.0182).
+* **Environment:** Python 3.12 with TensorFlow 2.20.
 
-الأرقام التالية من التنفيذ المحفوظ لهذه النسخة؛ لم تُعَد التجارب أثناء تعريب التوثيق.
+---
 
-### التحقق المتقاطع الطبقي بثلاث طيات
+## Key Results
 
-| النموذج | Macro-F1 | الانحراف المعياري بين الطيات | المعاملات القابلة للتدريب |
+### Training Cross-Validation (3-Fold Stratified)
+
+| Model | Macro-F1 | Fold SD | Trainable Parameters |
 | :--- | :--- | :--- | :--- |
 | **CNN** | **0.8822** | 0.0013 | 105,866 |
-| شبكة متعددة الطبقات كثيفة | 0.8670 | 0.0021 | 109,386 |
-| خط الأساس البسيط | 0.0182 | 0.0000 | 0 |
+| Dense MLP | 0.8670 | 0.0021 | 109,386 |
+| Dummy Baseline | 0.0182 | 0.0000 | 0 |
 
-### التقييم النهائي على الاختبار المحفوظ (مجموعة الاختبار الرسمية - 10,000 عينة)
+* **Protocol:** 3-fold cross-validation on the 60,000 training dataset (40,000 fit / 20,000 validation per fold).
+* **Hyperparameters:** Fixed 5 epochs, batch size of 256, Adam optimizer ($\text{lr}=0.001$), and dropout rate of 0.25. Pixels rescaled to $[0, 1]$.
+* **Architecture:** 
+  * **CNN:** Two $3 \times 3$ Conv layers (16 and 32 filters) with Max Pooling, followed by a 64-unit Dense layer.
+  * **MLP:** Two Dense layers (128 and 64 units).
 
-| النموذج | Macro-F1 | الدقة | الدقة المتوازنة |
+### Final Holdout Evaluation (Official Test Set - 10,000 Samples)
+
+| Model | Macro-F1 | Accuracy | Balanced Accuracy |
 | :--- | :--- | :--- | :--- |
 | **CNN** | **0.8871** | **0.8874** | **0.8874** |
-| خط الأساس البسيط | 0.0182 | 0.1000 | 0.1000 |
+| Dummy Baseline | 0.0182 | 0.1000 | 0.1000 |
 
-## الرسوم والنتائج المرئية
+* **Refitting:** The selected CNN was refitted on all 60,000 training images for 5 epochs before test evaluation.
+* **Error Analysis:** 1,126 out of 10,000 test images were misclassified. The *Shirt* class exhibited the highest error rate (F1 = 0.6937), frequently misclassified as *T-shirt/top* (136 cases) or *Coat* (95 cases).
 
-![رسم 1: مقارنة النماذج](figures/model-comparison.png)
+---
 
-![رسم 2: منحنيات التدريب والتحقق](figures/learning-curves.png)
+## Visualizations
 
-![رسم 3: مصفوفة الالتباس](figures/confusion-matrix.png)
+| Model Comparison | Learning Curves |
+| :---: | :---: |
+| ![Training cross-validation Macro-F1 and fold SD](figures/model-comparison.png) | ![Mean training and validation accuracy and loss](figures/learning-curves.png) |
 
-![رسم 4: أمثلة أخطاء التصنيف](figures/error-examples.png)
+| Confusion Matrix | Error Examples |
+| :---: | :---: |
+| ![CNN confusion matrix on the official test set](figures/confusion-matrix.png) | ![First twelve test errors in source order](figures/error-examples.png) |
 
-![رسم 5: أمثلة مجموعة البيانات](figures/dataset-examples.png)
+| Dataset Examples | Data Quality |
+| :---: | :---: |
+| ![First training image from each class](figures/dataset-examples.png) | ![Training class counts and data audit](figures/data-quality.png) |
 
-![رسم 6: جودة البيانات وتوازن الفئات](figures/data-quality.png)
+---
 
-الرسوم محفوظة من التنفيذ الأصلي. تعريب هذه الصفحة لا يغيّر بياناتها أو تسميات الصور داخل الملفات.
+## Quick Start
 
-## الملفات المرجعية
+### 1. Installation
 
-- [مقاييس التقييم والنتائج](metrics.json).
-- [بيانات التدقيق وبيئة التنفيذ](audit.json).
-- [مصدر البيانات وشروط الترخيص](SOURCE.md).
-- [سجل أخطاء الاختبار](error_analysis.csv).
-- [دفتر شرح التحليل](analysis.ipynb).
-- [ملاحظات المراجعة البشرية](LEARNING_NOTES.md).
+Clone the repository and install the dependencies:
 
-## المصادر والإسناد
-
-- [مصدر 1: https://github.com/your-username/fashion-mnist-tensorflow.git](https://github.com/your-username/fashion-mnist-tensorflow.git).
-
-[المرجع التقني الإنجليزي الكامل](README.en.md) يحفظ تفاصيل النسخة الأصلية. تُترك أسماء الملفات والأوامر ومعرّفات النماذج والمقاييس بصيغتها التقنية لضمان تطابقها مع الكود.
+```bash
+git clone [https://github.com/your-username/fashion-mnist-tensorflow.git](https://github.com/your-username/fashion-mnist-tensorflow.git)
+cd fashion-mnist-tensorflow
+pip install -r requirements.txt
